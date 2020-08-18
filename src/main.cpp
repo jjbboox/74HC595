@@ -1,5 +1,5 @@
 #include <arduino.h>
-#include <drv_74hc595.h>
+#include <dev_74hc595.h>
 
 static const uint16_t sda_pin = 10;
 static const uint16_t sck_pin = 11;
@@ -13,7 +13,7 @@ typedef struct {
 
 void setup() {
     // 定义一个以uint16_t为数据单位的595对象
-    Drv74HC595<uint16_t> hc595(sda_pin, sck_pin, push_pin, en_pin);
+    Dev74HC595<uint16_t> hc595(sda_pin, sck_pin, push_pin, en_pin);
     // 定义一个用于发送的数组
     uint16_t data[2] = {0xff00, 0xf0f0};
     // 发送整个数组到74hc595
@@ -24,15 +24,15 @@ void setup() {
     uint16_t b = 0x0045;
     hc595 = a + b;
 
-    Drv74HC595<NixieTubeCtrl> hc595_1(sda_pin, sck_pin, push_pin, en_pin);
-    NixieTubeCtrl ntc = {0xff, 0xfe};
+    // Dev74HC595<NixieTubeCtrl> hc595_1(sda_pin, sck_pin, push_pin, en_pin);
+    // NixieTubeCtrl ntc = {0xff, 0xfe};
 
-    // 动态扫描
-    for(int i = 0; i < 8; i++) {
-        hc595_1 << ntc;
-        ntc.dig <<= 1;
-        delay(10);
-    }
+    // // 动态扫描
+    // for(int i = 0; i < 8; i++) {
+    //     hc595_1 << ntc;
+    //     ntc.dig <<= 1;
+    //     delay(10);
+    // }
 }
 
 void loop() {

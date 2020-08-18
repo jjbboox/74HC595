@@ -1,11 +1,11 @@
-#ifndef _DRV_74HC595_H_
-#define _DRV_74HC595_H_
+#ifndef _DEV_74HC595_H_
+#define _DEV_74HC595_H_
 #include <Arduino.h>
 
 template<class T>
-class Drv74HC595 {
+class Dev74HC595 {
     public:
-        Drv74HC595(const uint16_t _sda, const uint16_t _sck, const uint16_t _push, const uint16_t _en) : sda_pin(_sda), sck_pin(_sck), push_pin(_push), en_pin(_en) {
+        Dev74HC595(const uint16_t _sda, const uint16_t _sck, const uint16_t _push, const uint16_t _en) : sda_pin(_sda), sck_pin(_sck), push_pin(_push), en_pin(_en) {
             pinMode(sda_pin, OUTPUT);
             pinMode(sck_pin, OUTPUT);
             pinMode(push_pin, OUTPUT);
@@ -31,7 +31,7 @@ class Drv74HC595 {
         {
             send((T*)&t);
         }
-        Drv74HC595& operator<<(const T& t) {
+        Dev74HC595& operator<<(const T& t) {
             send((T*)&t);
             return *this;
         }
