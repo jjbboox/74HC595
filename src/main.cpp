@@ -23,6 +23,7 @@ void setup() {
     hc595.send(&a);
     uint16_t b = 0x0045;
     hc595 = a + b;
+    hc595 << a << b;
 
     // Dev74HC595<NixieTubeCtrl> hc595_1(sda_pin, sck_pin, push_pin, en_pin);
     // NixieTubeCtrl ntc = {0xff, 0xfe};
