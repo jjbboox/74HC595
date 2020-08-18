@@ -26,6 +26,14 @@ class Drv74HC595 {
 
             }
             digitalWrite(push_pin, HIGH);
+        };
+        void operator=(const T& t)
+        {
+            send((T*)&t);
+        }
+        Drv74HC595& operator<<(const T& t) {
+            send((T*)&t);
+            return *this;
         }
     private:
         uint16_t    sda_pin;

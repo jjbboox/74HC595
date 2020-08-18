@@ -16,6 +16,13 @@ void setup() {
     uint16_t a = 0x2345;
     // 发送1个数据到74hc595
     hc595.send(&a);
+    uint16_t b = 0x0045;
+    hc595 = a + b;
+
+    Drv74HC595<uint16_t> hc595_1 = hc595;
+    hc595_1 = a - b;
+    // 先发送a，再发送b
+    hc595_1 << a << b;
 }
 
 void loop() {
