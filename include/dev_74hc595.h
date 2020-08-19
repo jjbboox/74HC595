@@ -42,4 +42,6 @@ class Dev74HC595 {
         uint16_t    en_pin;
 };
 
+// modify for git test
+
 #endif // _DRV_74HC595_H_
