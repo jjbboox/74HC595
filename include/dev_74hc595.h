@@ -14,6 +14,17 @@ class Dev74HC595 {
         void send(T* b, uint16_t len=1) {
             uint32_t andWord = 1;
             andWord <<= (sizeof(T) * 8 - 1);
+            
+            #ifdef _DEBUG_
+                Serial.print("调试信息:");
+                for(int i = 0; i < len; i++) {
+                    char str[10];
+                    sprintf(str, "\t0x%X", (b[i]));
+                    Serial.print(str);
+                }
+                Serial.println();
+            #endif
+
             digitalWrite(push_pin, LOW);
             for(int l = 0; l < len; l++) {
                 T t_b = b[l];
